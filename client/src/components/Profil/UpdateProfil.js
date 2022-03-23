@@ -12,6 +12,7 @@ const UpdateProfil = () => {
     const [updateForm, setUpdateForm] = useState(false);
     const userData = useSelector((state) => state.userReducer);
     const usersData = useSelector((state) => state.usersReducer);
+    const error = useSelector((state) => state.errorReducer.userError);
     const dispatch = useDispatch();
     const [followingPopup, setFollowingPopup] = useState(false);
     const [followersPopup, setFollowersPopup] = useState(false);
@@ -27,9 +28,11 @@ const UpdateProfil = () => {
             <h1> Profil de {userData.pseudo}</h1>
             <div className="update-container">
                 <div className="left-part">
-                    <h3>Photo de profil</h3>
-                    <img src={userData.picture} alt="user-pic" />
-                    <UploadImg />
+                  <h3>Photo de profil</h3>
+                  <img src={userData.picture} alt="user-pic" />
+                  <UploadImg />
+                  <p>{error.maxSize}</p>
+                  <p>{error.format}</p>
                 </div>
                 <div className="right-part">
                     <div className="bio-update">
@@ -38,7 +41,7 @@ const UpdateProfil = () => {
                     <>
                         <p onClick={() => setUpdateForm(!updateForm)}>{userData.bio}</p>
                         <button onClick={() => setUpdateForm(!updateForm)}>
-                        Modifier bio
+                          Modifier bio
                         </button>
                     </>
                     )}
