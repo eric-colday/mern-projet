@@ -22,7 +22,7 @@ const NewPostForm = () => {
       data.append('message', message);
       if (file) data.append("file", file);
       data.append('video', video);
-      
+
       await dispatch(addPost(data));
       dispatch(getPosts());
       cancelPost();
@@ -116,12 +116,7 @@ const NewPostForm = () => {
                       <iframe
                         src={video}
                         frameBorder="0"
-                        allow="accelerometer; 
-                              autoplay; 
-                              clipboard-write; 
-                              encrypted-media; 
-                              gyroscope; 
-                              picture-in-picture"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                         title={video}
                       ></iframe>
